@@ -1,0 +1,84 @@
+version: '3.9'
+
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: ./dockerfile/proxy.Dockerfile
+    networks:
+      - ext_net
+      - proxy_net
+    volumes:
+      - ./bind-mount/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - web 
+      - pma
+            
+  web:
+    build:
+      context: .
+      dockerfile: ./dockerfile/web.Dockerfile
+    networks:
+      - proxy_net
+      - int_net
+    volumes:
+      - webdata:/usr/src/myapp      
+    depends_on:
+      - mysql
+
+  pma:
+    build:
+      context: .
+      dockerfile: ./dockerfile/pma.Dockerfile
+    networks:
+      - proxy_net
+      - int_net
+    links: 
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PASSWORD_FILE: /run/secrets/mysql_root_pass
+    depends_on:
+      - mysql
+
+  mysql:
+    build: 
+      context: .
+      dockerfile: ./dockerfile/mysql.Dockerfile            
+    networks:
+      - int_net
+    secrets:
+      - mysql_root_pass
+      - mysql_database
+      - mysql_user
+      - mysql_user_pass      
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_pass
+      MYSQL_DATABASE_FILE: /run/secrets/mysql_database
+      MYSQL_USER: /run/secrets/mysql_user
+      MYSQL_PASSWORD_FILE: /run/secrets/mysql_user_pass
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
+        
+volumes:      
+  mysqldata:
+  webdata:
+
+networks:
+  ext_net:
+  proxy_net:      
+  int_net:
+
+secrets:
+  mysql_root_pass:
+    file: ./secrets/mysql_root_pass.txt
+  mysql_database:
+    file: ./secrets/mysql_database.txt
+  mysql_user:
+    file: ./secrets/mysql_user.txt
+  mysql_user_pass:
+    file: ./secrets/mysql_user_pass.txt
+

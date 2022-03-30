@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  proxy:
+    image: huzefril/proxy-custom:1.0.0
+  web:
+    image: huzefril/web-custom:1.0.0
+  pma:
+    image: huzefril/pma-custom:1.0.0
+  mysql:
+    image: huzefril/mysql-custom:1.0.0
