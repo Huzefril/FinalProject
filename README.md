@@ -4,7 +4,14 @@
 
 Repository ini terdiri dari file-file yang dibutuhkan untuk menjalankan tugas Final Project - Docker Advanced.
 
-Struktur directory :
+### Base image yang terlibat :
+
+mysql:5.7
+nginx:1.15.6
+php:7.2-apache
+phpmyadmin/phpmyadmin:4.8.3
+
+### Struktur directory :
 
 ```
 FinalProject
@@ -31,39 +38,67 @@ FinalProject
 │   
 └─── database
 |    │   dump.sql               --> inisiasi DML / DDL ke database setelah container mysql terbentuk
-
+│   
+└─── file-web
+|    │   ......                 --> folder web php yang dipetakan dengan cara bind volume
 ```
 
 ### Cara menjalankan di local development
 
-1. clone project nya dahulu <br/>       
-git clone https://github.com/Huzefril/FinalProject.git
+#### Persiapan
+
+1. Pastikan komputer local sudah terinstall docker, baik Docker Desktop pakai W2SL atau pakai Virtualisasi lainnya.
+2. Modifikasi is file /etc/hosts sesuai dengan domain yang ingin dites sesuai requirement.
+   - misalnya kalau di windows lokasinya di : C:\windows\system32\drivers\etc\host
+   - tambahkan mapping ip localhost dengan nama domain yang diinginkan di file tersebut.
+     - 127.0.0.1 www.huzefril.local
+     - 127.0.0.1 pma.huzefril.local
+   - Baris pertama untuk mapping host dengan IP untuk menampilkan website pesbuk.
+   - Baris kedua untuk mapping host dengan IP untuk menampilkan web PHP My Admin.
+
+#### Eksekusi
+
+1. clone project nya dahulu      
+   - git clone https://github.com/Huzefril/FinalProject.git
 
 2. execute perintah docker-compose
+   - docker-compose up -d
 
-docker-compose up -d
+3. tunggu sampai semua service up.
+   - bisa dengan perintah cek : docker service ls
+   - bisa cek juga melalui Docker Desktop
+   
+#### Test
 
-3. modifikasi is file /etc/hosts sesuai dengan domain yang ingin dites
-
-misalnya kalau di windows lokasinya di : C:\windows\system32\drivers\etc\host
-
-kita tambahkan 2 baris :
-
-127.0.0.1 www.huzefril.local
-127.0.0.1 pma.huzefril.local
-
-Baris pertama untuk mapping host dengan IP untuk menampilkan website pesbuk.
-Baris kedua untuk mapping host dengan IP untuk menampilkan PHP My Admin.
+1. Akses dari browser : http://www.huzefril.local
+2. Akses dari browser : http://pma.huzefril.local
 
 
-### Base image yang terlibat :
+### Cara menjalankan di server production / GCP 
 
-mysql:5.7
-nginx:1.15.6
-php:7.2-apache
-phpmyadmin/phpmyadmin:4.8.3
+#### Persiapan
 
+1. Pastikan sudah mempunyai account GCP
+2. Buat 3 instance dari GCP Compute Engine yang masing-masingnya diinstall docker.
+3. Jadikan 3 instance itu dalam mode Docker swarm, dan ketiga-tiganya sebagai Node Manager.
 
+#### Eksekusi
+
+1. Login SSH ke instance-1
+
+2. clone project nya dahulu      
+   - git clone https://github.com/Huzefril/FinalProject.git
+
+2. execute perintah docker stack deploy dengan nama stack : myweb-app
+   - docker stack deploy -c docker-compose.yml -c docker-compose-stack.yml myweb-app
+
+3. tunggu sampai semua service up.
+   - bisa dengan perintah cek : docker service ls
+   
+#### Test
+
+1. Akses dari browser : http://www.huzefril.local
+2. Akses dari browser : http://pma.huzefril.local
 ### Langkah-langkah pengerjaan
 
 
