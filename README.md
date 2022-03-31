@@ -6,10 +6,10 @@ Repository ini terdiri dari file-file yang dibutuhkan untuk menjalankan tugas Fi
 
 ### Base image yang terlibat :
 
-mysql:5.7
-nginx:1.15.6
-php:7.2-apache
-phpmyadmin/phpmyadmin:4.8.3
+- mysql:5.7
+- nginx:1.15.6
+- php:7.2-apache
+- phpmyadmin/phpmyadmin:4.8.3
 
 ### Struktur directory :
 
@@ -70,8 +70,8 @@ FinalProject
    
 #### Test
 
-1. Akses dari browser : http://www.huzefril.local
-2. Akses dari browser : http://pma.huzefril.local
+1. Akses dari browser : http://www.huzefril.local , untuk mengecek web pesbuk berhasil dideploy di local.
+2. Akses dari browser : http://pma.huzefril.local , untuk mengecek web phpmyadmin berhasil dideploy di local.
 
 
 ### Cara menjalankan di server production / GCP 
@@ -97,8 +97,8 @@ FinalProject
    
 #### Test
 
-1. Akses dari browser : http://www.huzefril.local
-2. Akses dari browser : http://pma.huzefril.local
+1. Akses dari browser : http://www.huzefril.local , untuk mengecek web pesbuk berhasil dideploy di Production
+2. Akses dari browser : http://pma.huzefril.local , untuk mengecek web phpmyadmin berhasil dideploy di Production
 ### Langkah-langkah pengerjaan
 
 
