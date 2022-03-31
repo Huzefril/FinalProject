@@ -17,7 +17,7 @@ Repository ini terdiri dari file-file yang dibutuhkan untuk menjalankan tugas Fi
 FinalProject
 |
 │   README.md
-│   docker-compose.yml             --> basic compose .yml file untuk Simple  Compose Design
+│   docker-compose.yml             --> basic compose .yml file berdasarkan konsep `Simple Compose Design`
 |   docker-compose.override.yml    --> konfigurasi docker compose untuk dijalankan di local
 │   docker-compose-stack.yml       --> konfigurasi docker stack untuk dijalankan di Production   
 |
