@@ -13,9 +13,7 @@ services:
       - web
       - pma
     deploy:
-      replicas: 3
-      placement:
-        max_replicas_per_node: 1      
+      replicas: 3  
       update_config:
         parallelism: 2
         delay: 10s
@@ -26,6 +24,8 @@ services:
     networks:
       - proxy_net
       - int_net
+    depends_on:
+      - mysql
     volumes:
       - webdata:/usr/src/myapp      
     deploy:
@@ -40,7 +40,7 @@ services:
     networks:
       - proxy_net
       - int_net
-    links: 
+    depends_on:
       - mysql
     secrets:
       - mysql_root_pass
@@ -85,11 +85,8 @@ volumes:
 
 networks:
   ext_net:
-    driver: overlay
   proxy_net:      
-    driver: overlay
   int_net:
-    driver: overlay
 
 secrets:
   mysql_root_pass:
