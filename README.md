@@ -51,27 +51,27 @@ FinalProject
 2. Modifikasi is file /etc/hosts sesuai dengan domain yang ingin dites sesuai requirement.
    - misalnya kalau di windows lokasinya di : C:\windows\system32\drivers\etc\host
    - tambahkan mapping ip localhost dengan nama domain yang diinginkan di file tersebut.
-     - 127.0.0.1 www.huzefril.local
-     - 127.0.0.1 pma.huzefril.local
+     - `127.0.0.1 www.huzefril.local`
+     - `127.0.0.1 pma.huzefril.local`
    - Baris pertama untuk mapping host dengan IP untuk menampilkan website pesbuk.
    - Baris kedua untuk mapping host dengan IP untuk menampilkan web PHP My Admin.
 
 #### Eksekusi
 
 1. clone project nya dahulu      
-   - git clone https://github.com/Huzefril/FinalProject.git
+   - `git clone https://github.com/Huzefril/FinalProject.git`
 
 2. execute perintah docker-compose
-   - docker-compose up -d
+   - `docker-compose up -d`
 
 3. tunggu sampai semua service up.
-   - bisa dengan perintah cek : docker service ls
+   - bisa dengan perintah cek : `docker service ls`
    - bisa cek juga melalui Docker Desktop
    
 #### Test
 
-1. Akses dari browser : http://www.huzefril.local , untuk mengecek web pesbuk berhasil dideploy di local.
-2. Akses dari browser : http://pma.huzefril.local , untuk mengecek web phpmyadmin berhasil dideploy di local.
+1. Akses dari browser : `http://www.huzefril.local` , untuk mengecek web pesbuk berhasil dideploy di local.
+2. Akses dari browser : `http://pma.huzefril.local` , untuk mengecek web phpmyadmin berhasil dideploy di local.
 
 
 ### Cara menjalankan di server production / GCP 
@@ -87,18 +87,20 @@ FinalProject
 1. Login SSH ke instance-1
 
 2. clone project nya dahulu      
-   - git clone https://github.com/Huzefril/FinalProject.git
+   - `git clone https://github.com/Huzefril/FinalProject.git`
 
 2. execute perintah docker stack deploy dengan nama stack : myweb-app
-   - docker stack deploy -c docker-compose.yml -c docker-compose-stack.yml myweb-app
+   - `docker stack deploy -c docker-compose.yml -c docker-compose-stack.yml myweb-app`
 
 3. tunggu sampai semua service up.
-   - bisa dengan perintah cek : docker service ls
+   - bisa dengan perintah cek : `docker service ls`
    
 #### Test
 
-1. Akses dari browser : http://www.huzefril.local , untuk mengecek web pesbuk berhasil dideploy di Production
-2. Akses dari browser : http://pma.huzefril.local , untuk mengecek web phpmyadmin berhasil dideploy di Production
+1. Akses dari browser : `http://www.huzefril.local` , untuk mengecek web pesbuk berhasil dideploy di Production
+2. Akses dari browser : `http://pma.huzefril.local` , untuk mengecek web phpmyadmin berhasil dideploy di Production
+
+
 ### Langkah-langkah pengerjaan
 
 
