@@ -37,6 +37,8 @@ services:
       - int_net
     links: 
       - mysql
+    secrets:
+      - mysql_root_pass
     environment:
       PMA_HOST: mysql
       PMA_PASSWORD_FILE: /run/secrets/mysql_root_pass
