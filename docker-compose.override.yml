@@ -24,7 +24,7 @@ services:
       - proxy_net
       - int_net
     volumes:
-      - webdata:/usr/src/myapp      
+      - webdata:/var/www/html      
     depends_on:
       - mysql
 
@@ -35,8 +35,6 @@ services:
     networks:
       - proxy_net
       - int_net
-    links: 
-      - mysql
     environment:
       PMA_HOST: mysql
       PMA_PASSWORD_FILE: /run/secrets/mysql_root_pass
