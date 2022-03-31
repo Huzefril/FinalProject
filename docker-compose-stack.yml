@@ -27,7 +27,7 @@ services:
     depends_on:
       - mysql
     volumes:
-      - webdata:/usr/src/myapp      
+      - webdata:/var/www/html    
     deploy:
       replicas: 1
       update_config:
