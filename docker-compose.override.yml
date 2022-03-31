@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.3'
 
 services:
   proxy:
@@ -9,7 +9,7 @@ services:
       - ext_net
       - proxy_net
     volumes:
-      - ./bind-mount/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./bind-mount/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - "80:80"
     depends_on:
