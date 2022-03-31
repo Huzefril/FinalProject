@@ -57,7 +57,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_pass
       MYSQL_DATABASE_FILE: /run/secrets/mysql_database
-      MYSQL_USER: /run/secrets/mysql_user
+      MYSQL_USER_FILE: /run/secrets/mysql_user
       MYSQL_PASSWORD_FILE: /run/secrets/mysql_user_pass
     volumes:
       - mysqldata:/var/lib/mysql
