@@ -23,14 +23,14 @@ FinalProject
 └─── secrets
 |    │   mysql_root_pass.txt    --> root password untuk msql
 |    │   mysql_database.txt     --> nama database untuk dipakai di final project ini
-│    |   mysql_user.txt         --> nama user database untuk dipakai dari aplikasi php
-|    │   mysql_user_pass.txt
+│    |   mysql_user.txt         --> nama user database yang dipakai untuk koneksi dari aplikasi php/web
+|    │   mysql_user_pass.txt    --> password user yang dipakai untuk koneksi dari dari aplikasi php/web
 │   
 └─── bind-mount
-|    │   nginx.conf
+|    │   nginx.conf             --> file konfigurasi nginx yang dipetakan dengan cara bind mount
 │   
 └─── database
-|    │   dump.sql
+|    │   dump.sql               --> inisiasi DML / DDL ke database setelah container mysql terbentuk
 
 ```
 
