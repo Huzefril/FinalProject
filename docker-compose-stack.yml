@@ -78,8 +78,11 @@ volumes:
 
 networks:
   ext_net:
+    driver: overlay
   proxy_net:      
+    driver: overlay
   int_net:
+    driver: overlay
 
 secrets:
   mysql_root_pass:
