@@ -1,3 +1,3 @@
 FROM mysql:5.7
 
-#HEALTHCHECK  CMD mysqladmin ping --silent || exit 1
+HEALTHCHECK  CMD mysqladmin ping --silent || exit 1
