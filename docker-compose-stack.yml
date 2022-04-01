@@ -2,6 +2,7 @@ version: '3.3'
 
 services:
   proxy:
+    image: huzefril/proxy-custom:1.0.0
     networks:
       - ext_net
       - proxy_net
@@ -21,6 +22,7 @@ services:
         condition: on-failure
 
   web:
+    image: huzefril/web-custom:1.0.0
     networks:
       - proxy_net
       - int_net
@@ -37,6 +39,7 @@ services:
         condition: on-failure
 
   pma:
+    image: huzefril/pma-custom:1.0.0
     networks:
       - proxy_net
       - int_net
@@ -56,6 +59,7 @@ services:
         condition: on-failure
 
   mysql:
+    image: huzefril/mysql-custom:1.0.0
     networks:
       - int_net
     secrets:
@@ -85,9 +89,12 @@ volumes:
 
 networks:
   ext_net:
+    driver: overlay
   proxy_net:      
+    driver: overlay
   int_net:
-
+    driver: overlay
+    
 secrets:
   mysql_root_pass:
     file: ./secrets/mysql_root_pass.txt
