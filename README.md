@@ -20,6 +20,8 @@ FinalProject
 │   docker-compose.yml             --> basic compose .yml file berdasarkan konsep `Simple Compose Design`
 |   docker-compose.override.yml    --> konfigurasi docker compose untuk dijalankan di local
 │   docker-compose-stack.yml       --> konfigurasi docker stack untuk dijalankan di Production   
+|   wait-for-it.sh                 --> fungsi wrapper untuk Healthcheck koneksi TCP , berguna misalnya untuk cek koneksi mysql 3306
+|                                      (https://github.com/vishnubob/wait-for-it), tapi diproject ini belum saya implement.
 |
 └─── dockerfile
 │    │   mysql.Dockerfile       --> dockerfile untuk build image mysql
@@ -95,7 +97,7 @@ FinalProject
 3. tunggu sampai semua service up.
    - bisa dengan perintah cek : `docker service ls`
    
-#### Test
+#### Test (TBA)
 
 1. Akses dari browser : `http://www.huzefril.local` , untuk mengecek web pesbuk berhasil dideploy di Production
 2. Akses dari browser : `http://pma.huzefril.local` , untuk mengecek web phpmyadmin berhasil dideploy di Production
