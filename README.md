@@ -76,7 +76,7 @@ FinalProject
 2. Akses dari browser : `http://pma.huzefril.local` , untuk mengecek web phpmyadmin berhasil dideploy di local.
 
 
-### Cara menjalankan di server production / GCP 
+### Cara menjalankan di server production / GCP (Google Cloud Platform)
 
 #### Persiapan
 
